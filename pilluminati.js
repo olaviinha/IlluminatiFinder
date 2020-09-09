@@ -65,11 +65,8 @@ $(document).ready(function(){
     $('#imgUrl').change(function(){
         var url = $(this).val();
         if(isUrlValid(url)){
-            console.log('url is valid', url);
             $('.cropper').html('<img id="image" src="'+url+'"/>');
             initCropper();
-        } else {
-            console.log('url is invalid', url);
         }
     });
 });
