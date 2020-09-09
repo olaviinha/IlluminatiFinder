@@ -11,7 +11,7 @@ This tool finds 100% solid proof of Illuminati from images across the web and ge
 ## Demo
 
 Input: 
-`https://thumbor.forbes.com/thumbor/fit-in/416x416/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5f4ebe0c87612dab4f12a597%2F0x0.jpg%3Fbackground%3D000000%26cropX1%3D292%26cropX2%3D3684%26cropY1%3D592%26cropY2%3D3987`
+https://i.pcmag.com/imagery/articles/040JHoVNgc1gh2e7sunj82k-1.fit_scale.size_1050x591.v1569492349.png
 
 Output:
 ![Illuminati Finder results](https://storage.googleapis.com/olaviinha/github/linus-illu.jpg)
