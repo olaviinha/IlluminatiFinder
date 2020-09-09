@@ -5,7 +5,7 @@ This tool finds 100% solid proof of Illuminati from images across the web and ge
 ## Howto
 
 1. Open [Illuminati Finder](https://joku.asia/esim/illuminati-finder/) in browser.
-1. Paste an image or an image URL from the interwebs.
+1. Paste an image URL from the interwebs.
 2. Copy result image and paste it everywhere you can to wake up sheeple.
 
 ## Demo
