@@ -5,10 +5,10 @@ This tool finds 100% solid proof of Illuminati from images across the web and ge
 ## Howto
 
 1. Open [Illuminati Finder](https://joku.asia/esim/illuminati-finder/) in browser.
-1. Paste an image from clipboard or image URL from the interwebs.
-2. Copy result image and paste it everywhere you can to wake up sheeple.
+1. Paste image or image URL from clipboard.
+2. Copy result image, paste it in social media and share it everywhere you can to wake up sheeple.
 
-## Demo
+## Example
 
 Input: 
 https://i.pcmag.com/imagery/articles/040JHoVNgc1gh2e7sunj82k-1.fit_scale.size_1050x591.v1569492349.png
@@ -16,7 +16,7 @@ https://i.pcmag.com/imagery/articles/040JHoVNgc1gh2e7sunj82k-1.fit_scale.size_10
 Output:
 ![Illuminati Finder results](https://storage.googleapis.com/olaviinha/github/linus-illu.jpg)
 
-_See, I knew it!_
+_See? I knew it!_
 
 ## Open in browser
 
