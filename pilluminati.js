@@ -61,6 +61,48 @@ function initCropper(){
     });
 }
 
+function retrieveImageFromClipboardAsBase64(pasteEvent, callback, imageFormat){
+    if(pasteEvent.clipboardData == false){
+        if(typeof(callback) == "function"){
+            callback(undefined);
+        }
+    };
+    var items = pasteEvent.clipboardData.items;
+    if(items == undefined){
+        if(typeof(callback) == "function"){
+            callback(undefined);
+        }
+    };
+    for (var i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") == -1) continue;
+        var blob = items[i].getAsFile();
+        var mycanvas = document.createElement("canvas");
+        var ctx = mycanvas.getContext('2d');
+        var img = new Image();
+        img.onload = function(){
+            mycanvas.width = this.width;
+            mycanvas.height = this.height;
+            ctx.drawImage(img, 0, 0);
+            if(typeof(callback) == "function"){
+                callback(mycanvas.toDataURL(
+                    (imageFormat || "image/png")
+                ));
+            }
+        };
+        var URLObj = window.URL || window.webkitURL;
+        img.src = URLObj.createObjectURL(blob);
+    }
+}
+
+window.addEventListener("paste", function(e){
+    retrieveImageFromClipboardAsBase64(e, function(imageDataBase64){
+        if(imageDataBase64){
+            $('.cropper').html('<img id="image" src="'+imageDataBase64+'"/>');
+            initCropper();
+        }
+    });
+}, false);
+
 $(document).ready(function(){
     $('#imgUrl').change(function(){
         var url = $(this).val();
@@ -70,6 +112,3 @@ $(document).ready(function(){
         }
     });
 });
-
-
-
