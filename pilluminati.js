@@ -1,5 +1,5 @@
 var dimensions = new Array();
-var initImage;
+var initImage, contentType, id, iu;
 
 function isUrlValid(url) {
     return /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(url);
@@ -47,7 +47,8 @@ function initCropper(){
     $('#submit').click(function(){
         $(this).prop('disable', true).addClass('disabled').text('Searching...');
         $.post('.', {
-            i: $image.attr('src'),
+            i: iu,
+            id: id,
             top: dimensions[0],
             left: dimensions[1],
             size: dimensions[2]
@@ -85,7 +86,8 @@ function retrieveImageFromClipboardAsBase64(pasteEvent, callback, imageFormat){
             ctx.drawImage(img, 0, 0);
             if(typeof(callback) == "function"){
                 callback(mycanvas.toDataURL(
-                    (imageFormat || "image/png")
+                    // (imageFormat || "image/jpeg")
+                    "image/jpeg", 1.0
                 ));
             }
         };
@@ -97,6 +99,9 @@ function retrieveImageFromClipboardAsBase64(pasteEvent, callback, imageFormat){
 window.addEventListener("paste", function(e){
     retrieveImageFromClipboardAsBase64(e, function(imageDataBase64){
         if(imageDataBase64){
+            contentType = 'image';
+            id = imageDataBase64;
+            iu = '';
             $('.cropper').html('<img id="image" src="'+imageDataBase64+'"/>');
             initCropper();
         }
@@ -107,6 +112,9 @@ $(document).ready(function(){
     $('#imgUrl').change(function(){
         var url = $(this).val();
         if(isUrlValid(url)){
+            contentType = 'url';
+            id = '';
+            iu = url;
             $('.cropper').html('<img id="image" src="'+url+'"/>');
             initCropper();
         }
