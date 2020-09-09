@@ -22,4 +22,4 @@ https://joku.asia/esim/illuminati-finder/
 
 ---
 
-Powered by [Cropper.js](https://github.com/fengyuanchen/cropperjs)
+Cropping powered by [Cropper.js](https://github.com/fengyuanchen/cropperjs)
