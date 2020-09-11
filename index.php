@@ -32,12 +32,12 @@ if((isset($_POST['i']) && $_POST['i'] != '') || (isset($_POST['id']) && $_POST['
             $draw->setStrokeColor('red');
             $draw->setStrokeWidth(2);
             $sy = rand(0, $frameSize/2);
-            $sx = rand(0, $frameSize/2);
-            $ey = rand($frameSize/4, $frameSize/1.2);
-            $ex = rand($frameSize/4, $frameSize/1.2);
+            $sx = rand(0, $frameSize);
+            $ey = rand($frameSize/2, $frameSize);
+            $ex = rand($frameSize, $frameSize/2);
             $draw->line($sy, $sx, $ey, $ex);
-            $ney = rand(0, $frameSize);
-            $nex = rand(0, $frameSize);
+            $ney = rand($frameSize/2, $frameSize);
+            $nex = rand($framesize/2, $frameSize);
             $draw->line($ey, $ex, $ney, $nex);
             $draw->line($ney, $nex, $sy, $sx);
             $imagick->drawImage($draw);
@@ -77,7 +77,7 @@ if((isset($_POST['i']) && $_POST['i'] != '') || (isset($_POST['id']) && $_POST['
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="description" content="Illuminati Finder">
+    <meta name="description" content="Find 100% solid proof of Illuminati.">
     <meta name="author" content="O. Inha">
     <title>Illuminati Finder</title>
     <link href="//fonts.googleapis.com/css2?family=Gayathri:wght@100;400&display=swap" rel="stylesheet" />
@@ -90,7 +90,7 @@ if((isset($_POST['i']) && $_POST['i'] != '') || (isset($_POST['id']) && $_POST['
     <div class="cropper">
         <div class="start">
             <img src="pilluminati.png" class="logo" />
-            <input type="text" id="imgUrl" placeholder="Paste image URL or image here." />
+            <input type="text" id="imgUrl" placeholder="Paste image or image URL here." />
         </div>
     </div>
     <div class="actions"><button id="submit">Find Illuminati</button></div>
@@ -103,3 +103,5 @@ if((isset($_POST['i']) && $_POST['i'] != '') || (isset($_POST['id']) && $_POST['
 <?php
 }
 ?>
+
+
