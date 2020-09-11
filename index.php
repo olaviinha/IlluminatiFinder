@@ -30,14 +30,14 @@ if((isset($_POST['i']) && $_POST['i'] != '') || (isset($_POST['id']) && $_POST['
             $draw = new \ImagickDraw(); 
             $draw->setFillColor('red');
             $draw->setStrokeColor('red');
-            $draw->setStrokeWidth(2);
+            $draw->setStrokeWidth(4);
             $sy = rand(0, $frameSize/2);
             $sx = rand(0, $frameSize);
             $ey = rand($frameSize/2, $frameSize);
             $ex = rand($frameSize, $frameSize/2);
             $draw->line($sy, $sx, $ey, $ex);
             $ney = rand($frameSize/2, $frameSize);
-            $nex = rand($framesize/2, $frameSize);
+            $nex = rand($framesize, $frameSize/2);
             $draw->line($ey, $ex, $ney, $nex);
             $draw->line($ney, $nex, $sy, $sx);
             $imagick->drawImage($draw);
